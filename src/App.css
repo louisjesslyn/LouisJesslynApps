@@ -1,0 +1,10 @@
+/* App-level resets — all styling is in index.css and components */
+#root {
+  min-height: 100vh;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  border: none;
+  text-align: left;
+  display: block;
+}

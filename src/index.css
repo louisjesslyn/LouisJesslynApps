@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Nunito:wght@300;400;600;700&display=swap');
+@import "leaflet/dist/leaflet.css";
+
+:root {
+  --purple-50: #faf5ff;
+  --purple-100: #f3e8ff;
+  --purple-200: #e9d5ff;
+  --purple-300: #d8b4fe;
+  --purple-400: #c084fc;
+  --purple-500: #a855f7;
+  --purple-600: #9333ea;
+  --purple-700: #7e22ce;
+  --purple-800: #6b21a8;
+  --purple-900: #581c87;
+  --pink-300: #f9a8d4;
+  --pink-400: #f472b6;
+  --rose-400: #fb7185;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: #0d0618;
+  color: #f3e8ff;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #1a0a2e; }
+::-webkit-scrollbar-thumb { background: var(--purple-600); border-radius: 3px; }
+
+.glass {
+  background: rgba(139, 92, 246, 0.08);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(167, 139, 250, 0.2);
+  border-radius: 16px;
+}
+
+.glass-dark {
+  background: rgba(13, 6, 24, 0.75);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(139, 92, 246, 0.25);
+  border-radius: 16px;
+}
+
+.glow-purple {
+  box-shadow: 0 0 30px rgba(168, 85, 247, 0.3), 0 0 60px rgba(168, 85, 247, 0.1);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--purple-300), var(--pink-300), var(--purple-400));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.btn-purple {
+  background: linear-gradient(135deg, var(--purple-600), var(--purple-700));
+  color: white;
+  border: none;
+  padding: 0.6rem 1.4rem;
+  border-radius: 50px;
+  cursor: pointer;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(147, 51, 234, 0.4);
+}
+
+.btn-purple:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(147, 51, 234, 0.5);
+  background: linear-gradient(135deg, var(--purple-500), var(--purple-600));
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--purple-300);
+  border: 1px solid rgba(167, 139, 250, 0.4);
+  padding: 0.6rem 1.4rem;
+  border-radius: 50px;
+  cursor: pointer;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+  background: rgba(139, 92, 246, 0.1);
+  border-color: var(--purple-400);
+  color: var(--purple-200);
+}
+
+.leaflet-container {
+  background: #1a0a2e !important;
+  border-radius: 16px;
+}
+
+.leaflet-tile-pane {
+  filter: hue-rotate(240deg) saturate(0.6) brightness(0.55);
+}
+
+.leaflet-control-zoom a {
+  background: rgba(13, 6, 24, 0.9) !important;
+  color: var(--purple-300) !important;
+  border-color: rgba(167, 139, 250, 0.3) !important;
+}
+
+.leaflet-popup-content-wrapper {
+  background: rgba(26, 10, 46, 0.95) !important;
+  border: 1px solid rgba(167, 139, 250, 0.3) !important;
+  border-radius: 12px !important;
+  color: #f3e8ff !important;
+  box-shadow: 0 8px 32px rgba(139, 92, 246, 0.3) !important;
+}
+
+.leaflet-popup-tip {
+  background: rgba(26, 10, 46, 0.95) !important;
+}
+
+input, textarea, select {
+  background: rgba(139, 92, 246, 0.1);
+  border: 1px solid rgba(167, 139, 250, 0.3);
+  border-radius: 10px;
+  color: #f3e8ff;
+  font-family: 'Nunito', sans-serif;
+  padding: 0.6rem 0.9rem;
+  width: 100%;
+  transition: border-color 0.2s;
+  font-size: 0.9rem;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--purple-400);
+  box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.15);
+}
+
+input::placeholder, textarea::placeholder {
+  color: rgba(167, 139, 250, 0.4);
+}
+
+select option {
+  background: #1a0a2e;
+  color: #f3e8ff;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; transform: scale(0.8); }
+  50% { opacity: 0.9; transform: scale(1.2); }
+}
+
+@keyframes float-up {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0.6; }
+  100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+.heart-pulse { animation: heartbeat 1.5s ease-in-out infinite; display: inline-block; }
+.animate-fadeInUp { animation: fadeInUp 0.5s ease forwards; }
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(6px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  animation: fadeInUp 0.2s ease;
+}
